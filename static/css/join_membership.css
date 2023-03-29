@@ -1,18 +1,28 @@
 * {
     padding: 0;
     margin:  0;
-  /*  border: 1px solid 
+  /*  border: 1px solid
 black;*/
   }
+    header {
+           display:flex;
+           justify-content: space-between;
+           width: 100%;
+           align-items: center;
+           padding: 1.2rem 0;
+    }
+
   body{background-color:black}
   .container {
-           max-width: 700px;
+           max-width: 500px;
            margin: 0 auto;
            box-sizing:border-box;
-           height: 100vh;
+           height: 90vh;
            display: flex;
            justify-content:space-between;
            flex-direction:column;
-           padding-bottom:5px
            align-items: center;
   }
+input {
+    margin :0.4rem;
+}

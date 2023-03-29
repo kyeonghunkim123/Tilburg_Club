@@ -1,164 +1,97 @@
-<html>
-
- <head>
-
-  <title> 하이퍼 회원가입 페이지 </title>
-
-  <meta name="generator" content="editplus" />
-
-  <meta name="author" content="zzarungna" />
-
-  <meta name="description" content="memeber form" />
-
- </head>
-
-
-
- <body>
-
-        <h3>회원가입</h3>
-
-               <form method="post" action="">
-
-                       <table border="1" width="400" height="400">
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">이름</td>
-
-                                      <td><input type="text" /></td>
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">E-mail</td>
-
-                                      <td><input type="text" maxlength="4" size="4" />
-
-                                      <select>
-
-                                             <option value="@naver.com">naver.com</option>
-
-                                             <option value="@gmail.com">gmail.com</option>
-
-                                             <option value="@hanmail.com">hanmail.com</option>
-
-                                             <option value="@daum.net">daum.net</option>
-
-                                      </select>
-
-                                      <input type="submit" value="E-mail 중복확인" />
-
-                                      </td>
-
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">암호</td>
-
-                                      <td><input type="password" /></td>
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">암호확인</td>
-
-                                      <td><input type="password" /></td>
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">주민번호</td>
-
-                                      <td>
-
-                                             <input type="text" maxlength="6" size="6" />
-
-                                             -
-
-                                             <input type="text" maxlength="7" size="7" />
-
-                                      </td>
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">연락처</td>
-
-                                      <td>
-
-                                             <select>
-
-                                                     <option value="t010">010</option>
-
-                                                     <option value="t011">011</option>
-
-                                                     <option value="t016">016</option>
-
-                                                     <option value="t017">017</option>
-
-                                                     <option value="t019">019</option>
-
-                                             </select>
-
-                                      -<input type="text" maxlength="4" size="4" />
-
-                                      -<input type="text" maxlength="4" size="4" />
-
-                                      </td>
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">메일링</td>
-
-                                      <td>
-
-                                             <input type="radio" id="ag1" name="yes" checked="checked" />
-
-                                             <label name="yes" for="ag1">받겠습니다.</label>
-
-                                             <input type="radio" id="ag2" name="yes" />
-
-                                             <label name="yes" for="ag2">받지않겠습니다.</label>
-
-                                      </td>
-
-                              </tr>
-
-                              <tr>
-
-                                      <td align="center" bgcolor="#FFFFCC">약관동의</td>
-
-                                      <td>
-
-                                             <input type="checkbox" id="agree" checked="checked" />
-
-                                             <label for="agree">동의합니다.</label>
-
-                                      </td>
-
-                              </tr>
-
-                       </table>
-
-
-
-                       <br />
-
-                       <input type="submit" value="가입하기" />
-
-                       <input type="reset" value="다시쓰기" />
-
-               </form>
-
- </body>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 하이퍼 회원가입 페이지 </title>
+
+    <meta name="generator" content="editplus" />
+    <meta name="author" content="zzarungna" />
+    <meta name="description" content="memeber form" />
+</head>
+    <link rel ="stylesheet"  href="{% static 'css/join_membership.css'%}">
+
+
+<body>
+<div class = 'container'>
+    <p style="color:white"><h3 style="color:white">회원가입</h3></p>
+           <form method="post" action="">
+                   <table border="1" width="400" height="400" >
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">이름</td>
+                                  <td bgcolor="#FAFAFA"><input type="text" maxlength="20" size="20" /></td>
+                          </tr>
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">E-mail</td>
+                                  <td bgcolor="#FAFAFA"><input type="text" maxlength="20" size="20" />
+                                  <select>
+                                         <option value="@naver.com">naver.com</option>
+                                         <option value="@gmail.com">gmail.com</option>
+                                         <option value="@hanmail.com">hanmail.com</option>
+                                         <option value="@daum.net">daum.net</option>
+                                  </select>
+                                  <input type="submit" value="중복확인" />
+                                  </td>
+                          </tr>
+
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">암호</td>
+                                  <td bgcolor="#FAFAFA"><input type="password" maxlength="20" size="20"/></td>
+                          </tr>
+
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">암호확인</td>
+                                  <td bgcolor="#FAFAFA"><input type="password" maxlength="20" size="20"/></td>
+                          </tr>
+
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">주민번호</td>
+                                  <td bgcolor="#FAFAFA">
+                                         <input type="text" maxlength="6" size="6" />
+                                         -
+                                         <input type="text" maxlength="7" size="7" />
+                                  </td>
+                          </tr>
+
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">연락처</td>
+                                  <td bgcolor="#FAFAFA">
+                                         <select>
+                                                 <option value="t010">010</option>
+                                                 <option value="t011">011</option>
+                                                 <option value="t016">016</option>
+                                                 <option value="t017">017</option>
+                                                 <option value="t019">019</option>
+                                         </select>
+                                  -<input type="text" maxlength="4" size="4" />
+                                  -<input type="text" maxlength="4" size="4" />
+                                  </td>
+                          </tr>
+
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">이메일 수신</td>
+                                  <td bgcolor="#FAFAFA">
+                                         <input type="radio" id="ag1" name="yes" checked="checked" />
+                                         <label name="yes" for="ag1"> 수신</label>
+                                         <input type="radio" id="ag2" name="yes" />
+                                         <label name="yes" for="ag2">미수신</label>
+                                  </td>
+                          </tr>
+
+                          <tr>
+                                  <td align="center" bgcolor="#424242" style="color:white">약관동의</td>
+                                  <td bgcolor="#FAFAFA">
+                                         <input type="checkbox" id="agree" checked="checked" />
+                                         <label for="agree">동의</label>
+                                  </td>
+                          </tr>
+                   </table>
+
+                   <br />
+                   <input border="3" type="submit" value="가입하기" />
+                   <input border="3" type="reset" value="다시쓰기" />
+           </form>
+</div>
+</body>
 
 </html>
