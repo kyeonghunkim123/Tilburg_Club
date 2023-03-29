@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -10,3 +11,6 @@ def login(request):
 
 def join(request):
     return render(request, "user/join_membership.html")
+
+def logout(request):
+    return HttpResponse("로그아웃 페이지입니다.")
