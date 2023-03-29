@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>로그인 페이지</title>
+        <link rel ="stylesheet"  href="{% static 'css/login_form.css'%}">
+    </head>
+    <body>
+        <div class="login-form">
+            <form>
+                <input type="text" name="email" class="text-field" placeholder="Email">
+                <input type="password" name="password" class="text-field" placeholder="Password">
+                <input type="submit" value="로그인" class="submit-btn">
+            </form>
+
+            <div class = 'links'>
+                <a href = "#"> 회원가입 </a>
+            </div>
+        </div>
+    </body>
+</html>
