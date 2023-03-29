@@ -4,7 +4,8 @@ import userapp.views as userapp
 
 urlpatterns = [
     path("mainpage", userapp.mainpage),
-    path("login", userapp.login)
+    path("login", userapp.login),
+    path("join_membership", userapp.join)
     ]
 
 # urlpatterns = [

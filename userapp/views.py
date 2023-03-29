@@ -7,3 +7,6 @@ def mainpage(request):
 
 def login(request):
     return render(request, "user/login.html")
+
+def join(request):
+    return render(request, "user/join_membership.html")
