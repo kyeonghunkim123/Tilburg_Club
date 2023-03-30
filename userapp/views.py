@@ -6,6 +6,7 @@ from django.http import HttpResponse
 def mainpage(request):
     return render(request, "user/main.html")
 
+<<<<<<< HEAD
 def login(request):
     return render(request, "user/login.html")
 
@@ -36,3 +37,7 @@ def find_me(request):
     content = f"<h1>{str_password} is your password</h1>"
     return HttpResponse(content)
     #return render(request, "user/find_phonenum.html")
+=======
+def find_pw(request):
+    return render(request, "user/find_pw.html")
+>>>>>>> 4e73767e5ce74812670625bb780a4d32b452c243
