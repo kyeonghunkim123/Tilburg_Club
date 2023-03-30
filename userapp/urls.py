@@ -6,7 +6,8 @@ urlpatterns = [
     path("mainpage", userapp.mainpage),
     path("login", userapp.login),
     path("join_membership", userapp.join),
-    path("logout", userapp.logout)
+    path("logout", userapp.logout),
+    path("find_pw", userapp.find_pw)
     ]
 
 # urlpatterns = [
