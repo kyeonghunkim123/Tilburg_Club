@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import pymysql
 
 # Create your views here.
 
 def mainpage(request):
     return render(request, "user/main.html")
 
-<<<<<<< HEAD
 def login(request):
     return render(request, "user/login.html")
 
@@ -19,11 +19,13 @@ def logout(request):
 def find_pw(request):
     return render(request, "user/find_pw.html")
 
-def find_me(request):
+def find_mp(request):
 
-    str_name = request.GET.get("username", )
-    str_phone = request.GET.get("phone", )
-
+    str_name = request.GET.get("username")
+    str_phone = request.GET.get("phone")
+    print('===============================')
+    print(str_name,str_phone)
+    print('===============================')
     conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
     cur = conn.cursor()
 
@@ -31,13 +33,9 @@ def find_me(request):
     val = (str_name, str_phone)
     cur.execute(sql_select, val)
 
-    row1 = cur.fetchone()
-    str_password = row1[0]
+    row = cur.fetchone()
+    str_password = row[0]
 
     content = f"<h1>{str_password} is your password</h1>"
     return HttpResponse(content)
-    #return render(request, "user/find_phonenum.html")
-=======
-def find_pw(request):
-    return render(request, "user/find_pw.html")
->>>>>>> 4e73767e5ce74812670625bb780a4d32b452c243
+    #return render(request, "user/find_mp.html")
