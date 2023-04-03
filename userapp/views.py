@@ -1,6 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout as django_logout
 # Create your views here.
 
 def mainpage(request):
@@ -13,4 +12,5 @@ def join(request):
     return render(request, "user/join_membership.html")
 
 def logout(request):
-    return HttpResponse("로그아웃 페이지입니다.")
+    django_logout(request)
+    return redirect("/")
