@@ -30,7 +30,8 @@ def find_mp(request):
     print('===============================')
     print(str_name,str_phone)
     print('===============================')
-    conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
+    #conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
     cur = conn.cursor()
     print('2')
     sql_select = 'select password from userTable where username = (%s) and phone = (%s)'
@@ -48,4 +49,8 @@ def find_mp(request):
         return render(request, "user/find_pw.html")
     print('5')
     return HttpResponse(content)
+
+    # if (str_name != "username") or (str_phone != "phone"):
+    #     return render(request, "user/find_pw.html")
+    # print('6')
     #return render(request, "user/find_mp.html")
