@@ -8,7 +8,8 @@ urlpatterns = [
     path("join_membership", userapp.join),
     path("logout", userapp.logout),
     path("find_pw", userapp.find_pw),
-    path("find_mp", userapp.find_mp)
+    path("find_mp", userapp.find_mp),
+    path("complete_join", userapp.complete_join)
     ]
 
 # urlpatterns = [
