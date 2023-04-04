@@ -7,7 +7,8 @@
 <body>
 
 <h1>Find Password</h1>
-       <form method="GET" action="find_mp">
+       <form method="POST" action="find_mp">
+           {% csrf_token %}
             <form>
                 <input type="text" name="username" class="text-field" placeholder="username"><br>
                 <input type="phone" name="phone" class="text-field" placeholder="phone number"><br><br>
