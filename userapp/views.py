@@ -39,11 +39,9 @@ def find_pw(request):
 
 def find_mp(request):
 
-    str_name = request.GET.get("username")
-    str_phone = request.GET.get("phone")
+    str_name = request.POST.get("username")
+    str_phone = request.POST.get("phone")
     print('=============1111111==================')
-    if (str_name == "") or (str_phone == ""):
-        return HttpResponseRedirect("find_pw")
 
     print('===============================')
     print(str_name,str_phone)
@@ -55,6 +53,9 @@ def find_mp(request):
     sql_select = 'select userpassword from main where username = (%s) and phone = (%s)'
     val = (str_name, str_phone)
     cur.execute(sql_select, val)
+
+    if request != sql_select:
+        return render(request, "user/find_pw.html")
 
     print('3')
     row = cur.fetchone()
@@ -68,9 +69,7 @@ def find_mp(request):
     print('5')
     return HttpResponse(content)
 
-    # if (str_name != "username") or (str_phone != "phone"):
-    #     return render(request, "user/find_pw.html")
-    # print('6')
+
     #return render(request, "user/find_mp.html")
 
 def find_id(request):
