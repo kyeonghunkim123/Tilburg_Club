@@ -14,6 +14,22 @@ def login(request):
 def join(request):
     return render(request, "user/join_membership.html")
 
+def complete_join(request):
+    join_name = request.POST.get("name")
+    join_phone = request.POST.get("phone")
+    join_ID = request.POST.get("ID")
+    join_password = request.POST.get("userpassword")
+    join_address = request.POST.get("useraddress")
+
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    cur = conn.cursor()
+    sql_insert = 'insert into main (username, phone, userpassword, useraddress,ID) values(%s,%s,%s,%s,%s)'
+    val = (join_name, join_phone,join_password,join_address,join_ID)
+    cur.execute(sql_insert, val)
+    conn.commit()
+    conn.close()
+    return render(request, "user/main.html")
+
 def logout(request):
     auth_logout(request)
     return redirect('/')
