@@ -52,14 +52,28 @@ def find_mp(request):
     print('2')
     sql_select = 'select userpassword from main where username = (%s) and phone = (%s)'
     val = (str_name, str_phone)
-    cur.execute(sql_select, val)
+    a=cur.execute(sql_select, val)
+    print('3')
+    print(sql_select)
+    print(a)
 
-    if request != sql_select:
-        return render(request, "user/find_pw.html")
+    # if str_name != sql_select:
+    #      return render(request, "user/find_pw.html")
 
     print('3')
     row = cur.fetchone()
-    str_password = row[0]
+
+    if row is None :
+        return render(request, "user/find_pw.html")
+    else:
+        str_password = row[0]
+
+
+    # if str_name !=row[1] or str_phone !=row[2]:
+    #     return render(request, "user/find_pw.html")
+
+    # str_password = row[0]
+
     print('4')
 
     content = f"<h1>{str_password} is your password</h1>"
