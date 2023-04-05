@@ -52,18 +52,42 @@ def find_mp(request):
     print('2')
     sql_select = 'select userpassword from main where username = (%s) and phone = (%s)'
     val = (str_name, str_phone)
-    cur.execute(sql_select, val)
+    a=cur.execute(sql_select, val)
+    print('3')
+    print(sql_select)
+    print(a)
 
+    # if str_name != sql_select:
+    #      return render(request, "user/find_pw.html")
+
+<<<<<<< HEAD
 <<<<<<< HEAD
     if str_name != sql_select:
 =======
     if request != sql_select:
 >>>>>>> dab134f4bfeb812f4e3a2176c3efa1ddd2b0335b
+=======
+    if str_name != sql_select:
+>>>>>>> dev
         return render(request, "user/find_pw.html")
 
     print('3')
     row = cur.fetchone()
+<<<<<<< HEAD
     str_password = row[0]
+=======
+
+    if row is None :
+        return render(request, "user/find_pw.html")
+    else:
+        str_password = row[0]
+
+
+    # if str_name !=row[1] or str_phone !=row[2]:
+    #     return render(request, "user/find_pw.html")
+
+    # str_password = row[0]
+>>>>>>> 0d34dd01cd60ea6b021a217c9b2ef813b0f38b4d
 
     print('4')
 
@@ -109,4 +133,8 @@ def find_mi(request):
     if row == None:
         return render(request, 'user/find_id.html')
     return HttpResponse(content)
+<<<<<<< HEAD
 >>>>>>> dab134f4bfeb812f4e3a2176c3efa1ddd2b0335b
+=======
+>>>>>>> 0d34dd01cd60ea6b021a217c9b2ef813b0f38b4d
+>>>>>>> dev

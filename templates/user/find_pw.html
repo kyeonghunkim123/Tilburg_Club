@@ -8,27 +8,41 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<h1>Find My Password</h1>
+       <form id = "form2" method="POST" action="find_mp">
+           {% csrf_token %}
+                <span>Username:</span><!--&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp< 앞에 글씨나오는거-->
+                <input type="text" id="username" name="username" class="text-field" placeholder="username"><br>
+                <!-- name & placeholder will be change to userid or ID -->
+                <span>Phone Number:</span>
+                <input type="text" id="phone" name="phone" class="text-field" placeholder="phone number"><br><br>
+>>>>>>> dev
 
+<<<<<<< HEAD
 <h1>Find Password</h1>
        <form method="POST" action="find_mp">
            {% csrf_token %}
             <form>
+<<<<<<< HEAD
 =======
 <h1>Find My Password</h1>
        <form id = "form2" method="POST" action="find_mp">
            {% csrf_token %}
                 <span>Username:</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<!-- 앞에 글씨나오는거-->
 >>>>>>> dab134f4bfeb812f4e3a2176c3efa1ddd2b0335b
+=======
+>>>>>>> dev
                 <input type="text" name="username" class="text-field" placeholder="username"><br>
-                <!-- # name & placeholder will be change to userid or ID -->
-                <span>Phone Number:</span>
                 <input type="phone" name="phone" class="text-field" placeholder="phone number"><br><br>
-                <!--<input type="submit" value="find my password" class="submit-btn">-->
+                <input type="submit" value="find my password" class="submit-btn">
+=======
+>>>>>>> 0d34dd01cd60ea6b021a217c9b2ef813b0f38b4d
             </form>
            <button value="Ok" onclick="check_form2()" onkeydown="keyboardEnter()">OK</button>
            <script type = "text/javascript" src="/static/js/find_pw.js"></script>
-           <script>function keyboardEnter{if (event.keyCode == 13){check_form2();}}</script>
-
+           <script>function keyboardEnter(){if (event.keyCode == 13){check_form2();}}</script>
 </body>
 </html>
 
