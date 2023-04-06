@@ -39,19 +39,18 @@ def find_pw(request):
 
 def find_mp(request):
 
-    str_name = request.POST.get("username")
+    str_ID = request.POST.get("ID")
     str_phone = request.POST.get("phone")
-    print('=============1111111==================')
 
     print('===============================')
-    print(str_name,str_phone)
+    print(str_ID,str_phone)
     print('===============================')
     #conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
     conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
     cur = conn.cursor()
     print('2')
-    sql_select = 'select userpassword from main where username = (%s) and phone = (%s)'
-    val = (str_name, str_phone)
+    sql_select = 'select userpassword from main where ID = (%s) and phone = (%s)'
+    val = (str_ID, str_phone)
     a=cur.execute(sql_select, val)
     print('3')
     print(sql_select)
@@ -60,27 +59,15 @@ def find_mp(request):
     # if str_name != sql_select:
     #      return render(request, "user/find_pw.html")
 
-    if str_name != sql_select:
-        return render(request, "user/find_pw.html")
-
     print('3')
     row = cur.fetchone()
-<<<<<<< HEAD
+
     str_password = row[0]
-=======
+
 
     if row is None :
         return render(request, "user/find_pw.html")
     else:
-        str_password = row[0]
-
-
-    # if str_name !=row[1] or str_phone !=row[2]:
-    #     return render(request, "user/find_pw.html")
-
-    # str_password = row[0]
->>>>>>> 0d34dd01cd60ea6b021a217c9b2ef813b0f38b4d
-
     print('4')
 
     content = f"<h1>{str_password} is your password</h1>"
@@ -90,11 +77,8 @@ def find_mp(request):
 
     print('5')
     return HttpResponse(content)
-
-
-<<<<<<< HEAD
-=======
-    #return render(request, "user/find_mp.html")
+def board(request):
+    return render(request,  "user/board.html")
 
 def find_id(request):
     return render(request, "user/find_id.html")
@@ -125,4 +109,4 @@ def find_mi(request):
     if row == None:
         return render(request, 'user/find_id.html')
     return HttpResponse(content)
->>>>>>> 0d34dd01cd60ea6b021a217c9b2ef813b0f38b4d
+
