@@ -26,7 +26,6 @@ function check_form2() {
     return false;
   }
 
-
   var elem=document.getElementById("form2").submit();
   elem.submit();
 }
