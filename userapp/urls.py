@@ -12,7 +12,8 @@ urlpatterns = [
     path("find_id", userapp.find_id),
     path("find_mi", userapp.find_mi),
     path("complete_join", userapp.complete_join),
-    path("board",userapp.board)
+    path("board",userapp.board),
+    path("complete_login", userapp.complete_login)
     ]
 
 # urlpatterns = [
