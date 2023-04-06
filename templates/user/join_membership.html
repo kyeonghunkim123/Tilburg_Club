@@ -1,8 +1,37 @@
 <html>
+{% load static %}
 
  <head>
 
   <title> 하이퍼 회원가입 페이지 </title>
+      <link rel ="stylesheet"  href="{% static 'css/join.css'%}">
+      <script>
+      function validateForm() {
+        var name = document.forms["joinForm"]["name"].value;
+        var id = document.forms["joinForm"]["ID"].value;
+        var phone = document.forms["joinForm"]["phone"].value;
+
+
+        var alphaNumeric = /^[a-zA-Z0-9]+$/;
+        if (!name.match(alphaNumeric)) {
+          alert("이름에는 알파벳과 숫자만 입력할 수 있습니다.");
+          return false;
+        }
+        if (!id.match(alphaNumeric)) {
+          alert("ID에는 알파벳과 숫자만 입력할 수 있습니다.");
+          return false;
+        }
+
+
+        var phoneRegex = /^[0-9-]+$/;
+        if (!phone.match(phoneRegex)) {
+          alert("전화번호에는 숫자와 하이픈(-)만 입력할 수 있습니다.");
+          return false;
+        }
+
+        return true;
+      }
+      </script>
 
  </head>
 
@@ -10,16 +39,18 @@
 
  <body>
 
-        <h3>회원가입</h3>
-
+        <h3>회원가입 페이지</h3>
+           <div class='signup-form'></div>
                <form method="post" action="complete_join">
                    {% csrf_token %}
-                   이름:<input type="text" name="name" required><br>
-                   전화번호:<input type="text" name="phone">(-를 입력해 주세요)<br>
-                   ID:<input type="text" name="ID" required><br>
-                   비밀번호:<input type="password" name="userpassword" required><br>
-                   주소:<input type="text" name="useraddress" required><br>
-                   <input type="submit">
+
+                   <input type="text" name="name" class="name" placeholder="이름을 입력해 주세요" style="width:400px;height:40px;font-size:18px;" required><br>
+                   <input type="text" name="phone" placeholder="전화번호(-를 입력해 주세요)" style="width:400px;height:40px;font-size:18px;" ><br>
+                   <input type="text" name="ID" placeholder="아이디를 입력해주세요" style="width:400px;height:40px;font-size:18px;" required><br>
+                   <input type="password" name="userpassword"  placeholder="패스워드를 입력해주세요" style="width:400px;height:40px;font-size:18px;" required><br>
+                   <input type="text" name="useraddress"  placeholder="주소를 입력해주세요" style="width:400px;height:40px;font-size:18px;" required><br>
+                   <input type="submit" style="background:black; width:100px;height:40px;font-size:18px;" class="submit" value="가입하기"  placeholder="가입하기">
+                   <input type="submit" style="background:black; width:100px;height:40px;font-size:18px;" class="submit" value="다시쓰기"  placeholder="다시쓰기">
                </form>
  </body>
 

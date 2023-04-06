@@ -64,7 +64,8 @@ def find_mp(request):
     row = cur.fetchone()
 
     if row is None :
-        return render(request, "user/find_pw.html")
+        return render(request, "user/find_pw.html"
+    )
     else:
         str_password = row[0]
 
