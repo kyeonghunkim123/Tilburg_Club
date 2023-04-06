@@ -11,6 +11,46 @@ def mainpage(request):
 def login(request):
     return render(request, "user/login.html")
 
+def complete_login(request):
+    print('=============000==================')
+
+    login_id = request.POST.get("ID")
+    login_password = request.POST.get("password")
+    print('=============1111111==================')
+
+    print('===============================')
+    print(login_id,login_password)
+    print('===============================')
+    #conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    cur = conn.cursor()
+    print('2')
+    sql_select = 'select ID,userpassword from main where ID = (%s) and userpassword = (%s)'
+    val = (login_id, login_password)
+    cur.execute(sql_select, val)
+    print('3')
+    print(sql_select)
+
+
+    # if str_name != sql_select:
+    #      return render(request, "user/find_pw.html")
+
+    print('3')
+    row = cur.fetchone()
+    print(row)
+
+    if row is None :
+        return render(request, "user/login.html")
+    else:
+        return render(request, "user/main.html")
+
+
+    # if str_name !=row[1] or str_phone !=row[2]:
+    #     return render(request, "user/find_pw.html")
+
+    # str_password = row[0]
+
+
 def join(request):
     return render(request, "user/join_membership.html")
 

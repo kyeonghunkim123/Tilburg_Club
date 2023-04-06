@@ -11,7 +11,8 @@ urlpatterns = [
     path("find_mp", userapp.find_mp),
     path("find_id", userapp.find_id),
     path("find_mi", userapp.find_mi),
-    path("complete_join", userapp.complete_join)
+    path("complete_join", userapp.complete_join),
+    path("complete_login", userapp.complete_login)
     ]
 
 # urlpatterns = [
