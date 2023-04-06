@@ -68,8 +68,7 @@ def find_mp(request):
     if row is None :
         return render(request, "user/find_pw.html")
     else:
-
-    content = f"<h1>{str_password} is your password</h1>"
+        content = f"<h1>{str_password} is your password</h1>"
 
     if (row == None):
         return render(request, "user/find_pw.html")
