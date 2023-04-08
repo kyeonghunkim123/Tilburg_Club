@@ -1,11 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>글쓰기</title>
+    <link rel ="stylesheet"  href="{% static 'css/board_write.css'%}">
 </head>
 <body>
-<p>글쓰기</p>
-
+    <form method="post" action="board/board_write">
+        {% csrf_token %}
+    <p>글쓰기</p>
+        <div>
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div>
+            <label for="author">작성자</label>
+            <input type="text" id="author" name="author">
+        </div>
+        <div>
+            <label for="content">내용</label>
+            <textarea id="content" name="content"></textarea>
 </body>
 </html>

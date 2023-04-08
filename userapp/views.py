@@ -93,32 +93,21 @@ def find_mp(request):
     val = (str_ID, str_phone)
     a=cur.execute(sql_select, val)
     print('3')
-    print(sql_select)
-    print(a)
 
-    # if str_name != sql_select:
-    #      return render(request, "user/find_pw.html")
-
-
-    print('3')
     row = cur.fetchone()
     str_password = row[0]
 
 
     if row is None :
-        return render(request, "user/find_pw.html"
-    )
+        return render(request, "user/find_pw.html")
     else:
-
-     content = f"<h1>{str_password} is your password</h1>"
-
+        content = f"<h1>{str_password} is your password</h1>"
 
     if (row == None):
         return render(request, "user/find_pw.html")
 
     print('5')
     return HttpResponse(content)
-
 
 def find_id(request):
     return render(request, "user/find_id.html")

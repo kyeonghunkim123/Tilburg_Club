@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tc.index),
     #localhost:8000/user/mainpage
-    path('user/', include("userapp.urls"))
+    path('user/', include("userapp.urls")),
+    path('board/', include("boardapp.urls"))
 ]
