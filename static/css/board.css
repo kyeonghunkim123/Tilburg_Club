@@ -1,0 +1,167 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Global */
+body {
+	font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+	display: flex;
+	align-items: center;
+	justify-content: center; /* 로그인과 회원가입을 좌우 정렬 */
+	padding: 10px 20px;
+	background-color: #1f1f1f;
+	color: #fff;
+}
+
+nav ul {
+	display: flex;
+}
+
+nav ul li {
+	margin-right: 20px;
+}
+
+nav ul li:last-child {
+	margin-right: 0;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.login {
+	display: flex; /* 로그인과 회원가입을 좌우 정렬 */
+	align-items: center;
+}
+
+.login a {
+	display: inline-block;
+	color: #fff;
+	margin-left: 20px;
+	text-decoration: none;
+}
+
+.board {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 80px;
+}
+
+thead tr {
+  border: 2px solid black;
+}
+
+thead th {
+  border-right: 2px solid black;
+  padding: 10px;
+}
+
+.post {
+  background-color: #f8f8f8;
+}
+
+.post:hover {
+  background-color: #e8e8e8;
+}
+
+.post td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.post-no {
+  width: 5%;
+  text-align: center;
+}
+
+.post-title {
+  text-align: center;
+  width: 50%;
+}
+
+.post-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-nickname {
+  text-align: center;
+  width: 10%;
+}
+
+.post-date {
+  text-align: center;
+  width: 20%;
+}
+
+.post-views {
+  text-align: center;
+  width: 15%;
+}
+
+.boardpage {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.boardpage a {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	color: #000;
+	text-decoration: none;
+}
+
+.boardpage a:hover {
+	background-color: #ddd;
+}
+
+.write {
+    display: inline-block;
+	margin-top: 30px;
+	text-align: left;
+}
+
+.write a {
+	padding: 11px 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+
+.write a:hover {
+	background-color: #ddd;
+}
+
+.list {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.list a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.list a:hover {
+	background-color: #ddd;
+}

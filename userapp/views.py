@@ -109,23 +109,16 @@ def find_mp(request):
         return render(request, "user/find_pw.html"
     )
     else:
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-    content = f"<h1>{str_password} is your password</h1>"
-=======
-      content = f"<h1>{str_password} is your password</h1>"
->>>>>>> cfe235e2a0d63b01588284469c3f6a0dcd312352
-=======
-        content = f"<h1>{str_password} is your password</h1>"
+     content = f"<h1>{str_password} is your password</h1>"
+
 
     if (row == None):
         return render(request, "user/find_pw.html")
 
     print('5')
     return HttpResponse(content)
-def board(request):
-    return render(request,  "user/board.html")
+
 
 def find_id(request):
     return render(request, "user/find_id.html")
