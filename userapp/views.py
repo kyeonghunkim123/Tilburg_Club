@@ -12,20 +12,20 @@ def login(request):
     return render(request, "user/login.html")
 
 def complete_login(request):
-    print('=============000==================')
 
     login_id = request.POST.get("ID")
     login_password = request.POST.get("password")
-    print('=============1111111==================')
 
-    print('===============================')
-    print(login_id,login_password)
-    print('===============================')
-    #conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
-    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read().strip()
+    dev_ps = root_ps + 'dev'
+
+
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     cur = conn.cursor()
-    print('2')
-    sql_select = 'select ID,userpassword from main where ID = (%s) and userpassword = (%s)'
+
+    sql_select = 'select user_ID,user_password from join_membership where user_ID = (%s) and user_password = (%s)'
     val = (login_id, login_password)
     cur.execute(sql_select, val)
     print('3')
@@ -61,10 +61,18 @@ def complete_join(request):
     join_password = request.POST.get("userpassword")
     join_address = request.POST.get("useraddress")
 
-    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read().strip()
+    dev_ps = root_ps + 'dev'
+    print(dev_ps)
+    print(root_ps)
+
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+    print(root_ps)
     cur = conn.cursor()
-    sql_insert = 'insert into main (username, phone, userpassword, useraddress,ID) values(%s,%s,%s,%s,%s)'
-    val = (join_name, join_phone,join_password,join_address,join_ID)
+    sql_insert = 'insert into join_membership (name, phone, user_ID, user_password,user_address) values(%s,%s,%s,%s,%s)'
+    val = (join_name, join_phone,join_ID,join_password,join_address)
     cur.execute(sql_insert, val)
     conn.commit()
     conn.close()
@@ -85,11 +93,19 @@ def find_mp(request):
     print('===============================')
     print(str_ID,str_phone)
     print('===============================')
+
+    filename="C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps=f.read()
+    print(root_ps)
+    print(filename)
+    dev_ps=root_ps+'dev'
+
     #conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
-    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     cur = conn.cursor()
     print('2')
-    sql_select = 'select userpassword from main where ID = (%s) and phone = (%s)'
+    sql_select = 'select user_password from join_membership where user_ID = (%s) and phone = (%s)'
     val = (str_ID, str_phone)
     a=cur.execute(sql_select, val)
     print('3')
@@ -102,23 +118,16 @@ def find_mp(request):
 
     print('3')
     row = cur.fetchone()
-    str_password = row[0]
+
 
 
     if row is None :
-        return render(request, "user/find_pw.html"
-    )
+        return render(request, "user/find_pw.html")
     else:
-<<<<<<< HEAD
-<<<<<<< HEAD
+        str_password = row[0]
 
-    content = f"<h1>{str_password} is your password</h1>"
-=======
-      content = f"<h1>{str_password} is your password</h1>"
->>>>>>> cfe235e2a0d63b01588284469c3f6a0dcd312352
-=======
+
         content = f"<h1>{str_password} is your password</h1>"
->>>>>>> kpbae
 
     if (row == None):
         return render(request, "user/find_pw.html")
@@ -135,18 +144,24 @@ def get_request(request):
     str_name = request.GET.get('username')
     str_phone = request.GET.get('phone')
     val = (str_name, str_phone)
-    conn = pymysql.connect(host='130.162.154.239',
-                           user='dev',
-                           password='1234',
-                           db='tilburg_club',
-                           charset='utf8')
+
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read()
+    print(root_ps)
+    print(filename)
+    dev_ps = root_ps + 'dev'
+
+    # conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+    cur = conn.cursor()
     cur = conn.cursor()
     return cur, val
 
 def find_mi(request):
     cur, val = get_request(request)
     print('db done')
-    sql_select = 'select ID from main where username = (%s) and phone = (%s)'
+    sql_select = 'select user_ID from join_membership where name = (%s) and phone = (%s)'
     cur.execute(sql_select, val)
 
     row = cur.fetchone()
