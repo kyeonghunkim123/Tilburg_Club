@@ -117,12 +117,9 @@ def find_mp(request):
     if row is None :
         return render(request, "user/find_pw.html")
     else:
-<<<<<<< HEAD
-=======
         str_password = row[0]
 
 
->>>>>>> ysseo
         content = f"<h1>{str_password} is your password</h1>"
 
     if (row == None):
