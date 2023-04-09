@@ -1,6 +1,9 @@
 body {
   background-color: grey;
-  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100%;
 }
 
 .signup-form {
@@ -12,7 +15,18 @@ body {
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);}
+  transform: translate(-50%, -50%);
+  }
+.find_id-form {
+  width: 500px;
+  margin: 50px auto;
+  padding: 10px;
+  background-color: grey;
+  border-radius: 10px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   }
 .submit {
   color:grey;
