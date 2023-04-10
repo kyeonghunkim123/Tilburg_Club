@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from mysql.connector import cursor
 import pymysql
 
 # Create your views here.
