@@ -8,14 +8,22 @@ def board(request):
 def board_write(request):
     return render(request, "board/board_write.html")
 def board_list(request):
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read()
+    dev_ps = root_ps + 'dev'
 
-    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     cur = conn.cursor()
-    sql_select = "select * from board" #where borad = (%s) and 한페이지?
-    cur.execute(sql_select)
+            # 쿼리 실행
+            sql = 'SELECT * FROM board_table'
+            cur.execute(sql)
 
-    for row in cursor.fetchall():
-        print(row)
+            # 결과 출력
+            result = cursor.fetchall()
+            for row in result:
+                print(row)
 
-    conn.close()
-
+    finally:
+        # 연결 종료
+        conn.close()

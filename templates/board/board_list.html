@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- render recent version of IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일에서 웹볼 때 사용하는 태그-->
+    <title>목록</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board.css' %}">
+</head>
+<body>
+    <form method="post" action="board/board_write" >
+
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">자유게시판</a></li>
+			<!--<li><a href="#"> 작업물</a></li>-->
+			</ul>
+		</nav>
+		<div class="login">
+			<a href="http://127.0.0.1:8000/user/login">로그인</a>
+			<a href="http://127.0.0.1:8000/user/join_membership">회원가입</a>
+		</div>
+	</header>
+<table class="board">
+  <thead>
+    <tr>
+      <th class="post-no">#</th>
+      <th class="post-title">제목</th>
+      <th class="post-nickname">닉네임</th>
+      <th class="post-date">등록일</th>
+      <th class="post-views">조회수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="post">
+      <td class="post-no">1</td>
+      <td class="post-title"><a href="#">첫 번째 게시물 제목</a></td>
+      <td class="post-nickname">작성자1</td>
+      <td class="post-date">2023-04-08</td>
+      <td class="post-views">123</td>
+    </tr>
+    <tr class="post">
+      <td class="post-no">2</td>
+      <td class="post-title"><a href="#">두 번째 게시물 제목</a></td>
+      <td class="post-nickname">작성자2</td>
+      <td class="post-date">2023-04-07</td>
+      <td class="post-views">45</td>
+    </tr>
+    <tr class="post">
+      <td class="post-no">3</td>
+      <td class="post-title"><a href="#">세 번째 게시물 제목</a></td>
+      <td class="post-nickname">작성자3</td>
+      <td class="post-date">2023-04-06</td>
+      <td class="post-views">678</td>
+    </tr>
+    <!-- 게시물 목록 계속해서 추가 -->
+  </tbody>
+</table>
+			</div>
+			<div class="boardpage">
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#">6</a>
+				<a href="#">7</a>
+				<a href="#">8</a>
+				<a href="#">9</a>
+				<a href="#">10</a>
+			</div>
+			<div class="write">
+				<a href="board_write">글쓰기</a>
+
+			</div>
+			<div class="list">
+				<a href="board_list">목록</a>
+			</div>
+            <div class="search">
+            <input type="text" name="query" placeholder="검색어를 입력하세요.">
+            <a href="board_search">검색</a>
+             </form>
+            </div>
+		</div>
+	</main>
+	<footer>
+</body>
+</html>
