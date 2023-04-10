@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>하이퍼 홈페이지</title>
+</head>
+      <link rel ="stylesheet"  href="{% static 'css/MyWebl.css'%}">
+<!--C:\Users\tjoeun\Documents\Tilburg_Club\templates\user\MyWebl.css-->
+<!--MyWebl.css-->
+<body>
+    <div class = 'container'>
+        <header>
+            <p style="color:white"><h1 style="color:white">메인페이지 TEST by kkh</h1></p>
+            <ul>
+                <li class="li0"><a id="a0" href="#" style="color:white">Home</a></li>
+                <li class="li1"><a id="a1" href=/user/login style="color:white">Login</a></li>
+                <li class="li2"><a id="a2" href="#" style="color:white">List</a></li>
+                <li class="li3"><a id="a3" href="/user/logout" style="color:white">Logout</a></li>
+                <li class="li4"><a id="a4" href="/board/board" style="color:white">Board</a></li>
+            </ul>
+        </header>
+        <section>
+               <p style="font-size:100px; color:white;">Welcome!
+               </p>
+        </section>
+        <footer></footer>
+    </div>
+</body>
+{#<script src="/js/core/jquery-3.6.4.min.js" type="text/javascript"></script>#}
+<script src="{% static 'js/core/jquery-3.6.4.min.js' %}"></script>
+<script src="/js/main_h.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function(){
+  {#alert("--1--")#}
+  $(".li1").html(""); // 태그 초기화
+
+      {% comment %}세션 체크 session['user_id']==null 이면 {% endcomment %}
+  $(".li1").append("<a id='a1' href='/user/login' style='color:white'>LoginTTT</a>"); // 태그 추가
+  $(".li3").html(""); // 태그 초기화
+
+      {#   세션 체크 session['user_id']!=null 이면 #}
+  {#   $(".li1").append("<a id='a4' href='/user/login' style='color:white'>Login OUT</a>"); // 태그 추가#}
+
+})
+</script>
+
+</html>

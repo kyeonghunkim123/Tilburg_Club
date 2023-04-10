@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from mysql.connector import cursor
+# from mysql.connector import cursor
 import pymysql
 
 # Create your views here.
@@ -15,7 +15,7 @@ def board_list(request):
     sql_select = "select * from board" #where borad = (%s) and 한페이지?
     cur.execute(sql_select)
 
-    for row in cursor.fetchall():
+    for row in cur.fetchall():
         print(row)
 
     conn.close()

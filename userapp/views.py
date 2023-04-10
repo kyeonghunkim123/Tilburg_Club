@@ -6,7 +6,8 @@ import pymysql
 # Create your views here.
 
 def mainpage(request):
-    return render(request, "user/main.html")
+    #return render(request, "user/main.html")
+    return render(request, "user/main_h.html")
 
 def login(request):
     return render(request, "user/login.html")
