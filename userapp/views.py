@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
+from django.views.decorators.csrf import csrf_exempt
+
+
 import pymysql
+import platform
 
 # Create your views here.
 
@@ -131,35 +135,47 @@ def find_mp(request):
 def find_id(request):
     return render(request, "user/find_id.html")
 
+@csrf_exempt
 def get_request(request):
-    str_name = request.GET.get('username')
-    str_phone = request.GET.get('phone')
-    val = (str_name, str_phone)
+    plf = platform.platform()
+    if 'mac' in plf:
+        filename = "/Users/tilburg_club/tilburg.txt"
+    else:
+        filename = "C:/tilburg_club/tilburg.txt"
 
-    filename = "C:/tilburg_club/tilburg.txt"
     with open(filename) as f:
         root_ps = f.read()
-    print(root_ps)
-    print(filename)
     dev_ps = root_ps + 'dev'
 
-    # conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
-    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+    conn = pymysql.connect(host='130.162.154.239',
+                           user='dev',
+                           password=dev_ps,
+                           db='tilburg_club',
+                           charset='utf8')
     cur = conn.cursor()
-    cur = conn.cursor()
-    return cur, val
-
+    res = {
+        'name': request.POST.get('name'),
+        'phone': request.POST.get('phone'),
+        'user_ID': request.POST.get('user_ID'),
+        'user_password': request.POST.get('user_password'),
+        'user_address': request.POST.get('user_address')
+    }
+    print(res)
+    return cur, res
 def find_mi(request):
-    cur, val = get_request(request)
+    cur, res = get_request(request)
+    res = (res['name'], res['phone'])
     print('db done')
+    print(res)
     sql_select = 'select user_ID from join_membership where name = (%s) and phone = (%s)'
-    cur.execute(sql_select, val)
+    cur.execute(sql_select, res)
 
-    row = cur.fetchone()
-    str_id = row[0]
+    user_ID = cur.fetchone()
 
-    content = f'<h1>{str_id} is your id</h1>'
+    content = f'<h1>{user_ID} is your id</h1>'
 
-    if row == None:
-        return render(request, 'user/find_id.html')
+    if user_ID == None:
+        return render('user/find_id.html')
+
+    print(content)
     return HttpResponse(content)
