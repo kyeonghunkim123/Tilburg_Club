@@ -6,23 +6,21 @@
     <title>하이퍼 홈페이지</title>
 </head>
       <link rel ="stylesheet"  href="{% static 'css/MyWebl.css'%}">
-<!--C:\Users\tjoeun\Documents\Tilburg_Club\templates\user\MyWebl.css-->
-<!--MyWebl.css-->
 <body>
     <div class = 'container'>
         <header>
             <p style="color:white"><h1 style="color:white">HYPER</h1></p>
             <ul>
-                <li><a
-                href="#" style="color:white">Home</a></li>
-                <li><a
-                href=/user/login style="color:white">Login</a></li>
-                <li><a
-                href="#" style="color:white">List</a></li>
-                <li><a
-                href="/user/logout" style="color:white">Logout</a></li>
-                <li><a
-                href="/board/board" style="color:white">Board</a></li>
+                {% if request.session.user_id %}
+                    <li><a href="/user/mainpage" style="color:white">Home</a></li>
+                    <li><a href="/user/logout" style="color:white">로그아웃</a></li>
+                    <li><a href="#" style="color:white">List</a></li>
+                    <li><a href="/board/board" style="color:white">Board</a></li>
+                {% else %}
+                    <li><a href="#" style="color:white">Home</a></li>
+                    <li><a href="/user/login" style="color:white">로그인</a></li>
+                    <li><a href="/user/join_membership/" style="color:white">회원가입</a></li>
+                {% endif %}
             </ul>
         </header>
         <section>

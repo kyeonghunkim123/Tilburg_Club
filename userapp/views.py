@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
 import pymysql
+import mysql.connector
 
 # Create your views here.
 
@@ -42,6 +43,8 @@ def complete_login(request):
     if row is None :
         return render(request, "user/login.html")
     else:
+        # 회원정보가 있는 경우
+        request.session['user_id'] = login_id
         return render(request, "user/main.html")
 
 
