@@ -3,7 +3,8 @@ import boardapp.views as boardapp
 
 urlpatterns = [
     path("board", boardapp.board),
-    path("board_write", boardapp.board_write)
+    path("board_write", boardapp.board_write),
+    path("board_list", boardapp.board_list)
     ]
 
 # urlpatterns = [
