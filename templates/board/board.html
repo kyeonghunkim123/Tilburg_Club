@@ -14,13 +14,17 @@
 	<header>
 		<nav>
 			<ul>
-                <li><a href="http://127.0.0.1:8000/board/board">자유게시판</a></li>
-			    <li><a href="#">Portfolio</a></li>
+               {% if request.session.title %}
+				<li><a href="board/board">자유게시판</a></li>
+                <li> {{request.session.title}}</li>
+			    <li><a href="#">포트폴리오</a></li>
 			</ul>
 		</nav>
+        {% else %}
 		<div class="login">
 			<a href="http://127.0.0.1:8000/user/login">로그인</a>
 			<a href="http://127.0.0.1:8000/user/join_membership">회원가입</a>
+        {% endif %}
 		</div>
 	</header>
 <table class="board">
@@ -47,13 +51,6 @@
       <td class="post-nickname">작성자2</td>
       <td class="post-date">2023-04-07</td>
       <td class="post-views">45</td>
-    </tr>
-    <tr class="post">
-      <td class="post-no">3</td>
-      <td class="post-title"><a href="#">세 번째 게시물 제목</a></td>
-      <td class="post-nickname">작성자3</td>
-      <td class="post-date">2023-04-06</td>
-      <td class="post-views">678</td>
     </tr>
     <!-- 게시물 목록 계속해서 추가 -->
   </tbody>
@@ -88,3 +85,5 @@
 	<footer>
 </body>
 </html>
+<!--메인 페이지 참고해서 하면됨 -->
+<!--request session 사용해서 하면 불러올수 있다 -->

@@ -13,7 +13,7 @@ urlpatterns = [
     path("find_mi", userapp.find_mi),
     path("complete_join", userapp.complete_join),
     path("complete_login", userapp.complete_login),
-
+    path("complete_login", userapp.complete_login)
     ]
 
 # urlpatterns = [
