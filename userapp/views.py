@@ -31,7 +31,7 @@ def complete_login(request):
     conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     cur = conn.cursor()
 
-    sql_select = 'select user_ID,user_password from join_membership where user_ID = (%s) and user_password = (%s)'
+    sql_select = 'select user_ID,user_password,name from join_membership where user_ID = (%s) and user_password = (%s)'
     val = (login_id, login_password)
     cur.execute(sql_select, val)
     print('3')
@@ -49,7 +49,8 @@ def complete_login(request):
         return render(request, "user/login.html",{'error_message': '아이디 또는 비밀번호가 일치하지 않습니다.'})
     else:
         # 회원정보가 있는 경우
-        request.session['user_id'] = login_id
+        request.session['user_name'] = row[2]
+        print(row[2])
         return render(request, "user/main.html")
 
 
