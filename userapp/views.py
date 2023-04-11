@@ -1,4 +1,4 @@
-import requests
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
@@ -45,13 +45,16 @@ def complete_login(request):
     row = cur.fetchone()
     print(row)
 
+
+
     if row is None :
         return render(request, "user/login.html",{'error_message': '아이디 또는 비밀번호가 일치하지 않습니다.'})
     else:
         # 회원정보가 있는 경우
         request.session['user_name'] = row[2]
+        request.session['user_id']=row[0]
         print(row[2])
-        return render(request, "user/main.html")
+        return render(request, "user/main.html",{'user_id':request.session.get('user_id')})
 
 
     # if str_name !=row[1] or str_phone !=row[2]:
