@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Board</title>
+    <title>자유게시판</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" type="text/css"/>
     <style>
         .uploadResult {
             width: 100%;
@@ -30,7 +31,7 @@
         <div class="inner">
             <!-- Elements -->
             <header class="major">
-                <h1>Board</h1>
+                <h1>자유게시판</h1>
                 <p>게시글 등록</p>
             </header>
             <!-- Table -->
