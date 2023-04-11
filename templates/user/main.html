@@ -14,6 +14,7 @@
                 {% if request.session.user_id %}
                     <li><a href="/user/mainpage" style="color:white">Home</a></li>
                     <li><a href="/user/logout" style="color:white">로그아웃</a></li>
+                    <li><p style="color:white" >{{ request.session.user_id }}님</p></li>
                     <li><a href="#" style="color:white">List</a></li>
                     <li><a href="/board/board" style="color:white">Board</a></li>
                 {% else %}
