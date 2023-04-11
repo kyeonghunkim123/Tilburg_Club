@@ -10,15 +10,28 @@ def board(request):
 
 def board_write(request):
     return render(request, "board/board_write.html")
-def board_list(request):
+def complete_write(request):
+    cmplt_title = request.POST.get("title")
+    cmplt_userid = request.POST.get("nickname")
+    cmplt_content = request.POST.get("content")
 
-    conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read().strip()
+    dev_ps = root_ps + 'dev'
+    print(dev_ps)
+    print(root_ps)
+
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+    print(root_ps)
     cur = conn.cursor()
-    sql_select = "select * from board" #where borad = (%s) and 한페이지?
-    cur.execute(sql_select)
-
-    for row in cursor.fetchall():
-        print(row)
-
+    sql_insert = 'insert into board_table (title, content, nickname, created_at, views) values(%s,%s,%s,%s,%s)'
+    val = (cmplt_title, cmplt_userid, cmplt_content)
+    cur.execute(sql_insert, val)
+    conn.commit()
     conn.close()
+    return render(request, "board/board.html")
+
+def board_list(request):
+    return render(request, "board/board_list.html")
 
