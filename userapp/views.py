@@ -176,7 +176,7 @@ def find_mi(request):
     content = f'<h1>{user_ID} is your id</h1>'
 
     if user_ID == None:
-        return render('user/find_id.html')
+        return render(request, 'user/find_id.html')
 
     print(content)
     return HttpResponse(content)
