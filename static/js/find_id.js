@@ -1,5 +1,5 @@
 function check_form() {
-  var username = document.getElementById("username").value;
+  var username = document.getElementById("name").value;
   var phone = document.getElementById("phone").value;
 
   var reg = /^\d{3}-\d{3,4}-\d{4}$/
