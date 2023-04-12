@@ -45,21 +45,17 @@
                                 <input name="title" placeholder="Title" type="text" />
                             </div>
                             <div class="field">
+                                <h4>내용</h4>
+                                <textarea name="content" rows="6" placeholder="Content" style="resize:none"></textarea>
+                            </div>
+                            <div class="field">
                                 <h4>작성자</h4>
                                 <input name="writer" placeholder="Writer" type="text" />
                             </div>
                             <div class="field">
-                                <h4>아파트이름</h4>
-                                <input name="aptname" placeholder="apt" type="text" />
-                            </div>
-                            <div class="field">
-                                <h4>내용</h4>
-                                <textarea name="content" rows="6" placeholder="Content" style="resize:none"></textarea>
-                            </div>
-                            <!--<div class="field">
                                 <h4>첨부파일</h4>
                                 <input type="file" name="uploadFiles" multiple>
-                            </div>-->
+                            </div>
                             <div class="field">
                                 <div class="uploadResult">
                                     <ul></ul>
@@ -79,13 +75,12 @@
     </div>
 </div>
 <!-- Scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.dropotron.min.js"></script>
-<script src="/js/browser.min.js"></script>
-<script src="/js/breakpoints.min.js"></script>
-<script src="/js/util.js"></script>
-<script src="/js/main.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/board/jquery.min.js' %}"></script>
+<script src="{% static 'js/board/jquery.dropotron.min.js' %}"></script>
+<script src="{% static 'js/board/breakpoints.min.js' %}"></script>
+<script src="{% static 'js/board/util.js' %}"></script>
+<script src="{% static 'js/board/main.js' %}"></script>
+<script src="{% static 'js/core/jquery-3.6.4.min.js' %}"></script>
 </body>
 <script>
     let check = false;

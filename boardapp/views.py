@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 # from mysql.connector import cursor
 import pymysql
+from django.views.decorators.http import require_http_methods
+
 
 class BoardClass:
     def __init__(self, bno, title, content, writer, regDate, updateDate):
@@ -30,6 +32,19 @@ def board(request):
     return render(request, 'board/list.html', context)
 
 def register(request):
+    print("---------POST 2 --------")
+    return render(request, 'board/register.html')
+
+
+
+@require_http_methods(['GET'])
+def register_get(request):
+    print("---------GET 1 --------")
+    return render(request, 'board/register.html')
+
+@require_http_methods(['POST'])
+def register_post(request):
+    print("---------POST 2 --------")
     return render(request, 'board/register.html')
 
 
@@ -39,6 +54,7 @@ def board_write(request):
     return render(request, "board/register.html")
 
 def board_list(request):
+    return
 
 
     # conn = pymysql.connect(host='130.162.154.239', user='dev', password='1234', db='tilburg_club', charset='utf8')
@@ -48,8 +64,8 @@ def board_list(request):
 
     # INSERT INTO TBL_BOARD(TITLE, CONTENT, WRITER) VALUES('테스트 제목5', '테스트 내용', 'user00');
 
-    for row in cur.fetchall():
-        print(row)
-
-    conn.close()
+    # for row in cur.fetchall():
+    #     print(row)
+    #
+    # conn.close()
 

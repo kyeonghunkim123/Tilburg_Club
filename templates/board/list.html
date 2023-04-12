@@ -44,6 +44,9 @@
                 <h6 style="color:red">여기는 HYPER 인공지능플랫폼팀 자유게시판 입니다</h6>
             </header>
             <h3><a href="{% url 'register' %}" class="button small">글 등록</a></h3>
+{#            <h3><a href="./register.html" target="_blank" class="button small">REGISTER</a></h3>#}
+{#            <h3><a href="{% static '../templates/board/register.html' %}" target="_blank" class="button small">REGISTER</a></h3>#}
+
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -84,7 +87,7 @@
                                     <option value="W" {% if criteria.type == 'W' %}selected{% endif %}>작성자</option>
                                     <option value="TC" {% if criteria.type == 'TC' %}selected{% endif %}>제목 또는 내용</option>
                                     <option value="TW" {% if criteria.type == 'TW' %}selected{% endif %}>제목 또는 작성자</option>
-                                    <option value="TCW" {% if criteria.type == 'TCW'%}selected{% endif %}>제목 또는 작성자</option>
+                                    <option value="TCW" {% if criteria.type == 'TCW'%}selected{% endif %}>제목 또는 내용 또는 작성자</option>
                                 </select>
                                 <input id="keyword" type="text" name="keyword" value="">
                                 <a href="javascript:void(0)" class="search button primary icon solid fa-search">검색</a>
