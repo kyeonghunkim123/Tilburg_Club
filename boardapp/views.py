@@ -48,8 +48,7 @@ def board_reg(request):
     conn.commit()
     conn.close()
 
-    request.session['title']=board_title
+    request.session['title', 'content', 'nickname'] = board_title
 
     print(request.session['title'])
     return render(request, "board/board.html")
-
