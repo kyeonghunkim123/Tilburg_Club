@@ -5,7 +5,7 @@ import pymysql
 # Create your views here.
 def board(request):
     print("------------------------")
-    print(request.session['user_id'])
+
     return render(request, "board/board.html")
 
 def board_write(request):
