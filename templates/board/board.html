@@ -12,12 +12,20 @@
 </head>
 <body>
     <form method="post" action="board/board_write" >
+<<<<<<< HEAD
 	<header>
+=======
+	<heder>
+>>>>>>> dev
 			<ul>
 				<li><a href="board/board">자유게시판</a></li>
 			    <li><a href="#">포트폴리오</a></li>
 			</ul>
+<<<<<<< HEAD
 	</header>
+=======
+	</heder>
+>>>>>>> dev
 <table class="board">
   <thead>
     <tr>
@@ -29,7 +37,11 @@
     </tr>
   </thead>
   <tbody>
+<<<<<<< HEAD
    {% for board in board_list %}
+=======
+  {% for board in board_list %}
+>>>>>>> dev
     <tr class="post">
       <td class="post-no">{{board.post-no}}</td>
       <td class="post-title"><a href="#">{{board.post-title}}</a></td>
@@ -38,12 +50,19 @@
       <td class="post-views">{{board.post-views}}</td>
     </tr>
   {% empty %}
+<<<<<<< HEAD
         <td colspan="5">게시물이 없습니다.</td>
+=======
+      <tr>
+          <td colspan="5">게시물이 없습니다.</td>
+      </tr>
+>>>>>>> dev
   {% endfor %}
   </tbody>
      <tfoot>
      </tfoot>
 </table>
+<<<<<<< HEAD
     <form action="#" method="GET" name="searchForm">
                     <div class="fields">
                         <div class="field">
@@ -62,12 +81,36 @@
                             </div>
                         </div>
                     </div>
+=======
+>>>>>>> dev
 			<div class="write">
 				<a href="board_write">글쓰기</a>
 			</div>
 			<div class="list">
 				<a href="board_list">목록</a>
 			</div>
+<<<<<<< HEAD
+=======
+        <form action="#" method="GET" name="searchForm">
+                    <div class="fields">
+                        <div class="field">
+                            <div id="searchWrap">
+                                <select name="type">
+                                    <option value="">검색 기준</option>
+                                    <option value="T" {% if criteria.type == 'T' %}selected{% endif %}>제목</option>
+                                    <option value="C" {% if criteria.type == 'C' %}selected{% endif %}>내용</option>
+                                    <option value="W" {% if criteria.type == 'W' %}selected{% endif %}>작성자</option>
+                                    <option value="TC" {% if criteria.type == 'TC' %}selected{% endif %}>제목 또는 내용</option>
+                                    <option value="TW" {% if criteria.type == 'TW' %}selected{% endif %}>제목 또는 작성자</option>
+                                    <option value="TCW" {% if criteria.type == 'TCW'%}selected{% endif %}>제목 또는 내용 또는 작성자</option>
+                                </select>
+                                <input id="keyword" type="text" name="keyword" value="">
+                                <a href="javascript:void(0)" class="search button primary icon solid fa-search">검색</a>
+                            </div>
+                        </div>
+                    </div>
+
+>>>>>>> dev
 		</div>
 	</main>
 	<footer>
