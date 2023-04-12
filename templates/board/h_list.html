@@ -43,7 +43,7 @@
                 <p>게시판 목록</p>
                 <h6 style="color:red">여기는 HYPER 인공지능플랫폼팀 자유게시판 입니다</h6>
             </header>
-            <h3><a href="{% url 'h_register_get' %}" class="button small">글 등록</a></h3>
+            <h3><a href="{% url 'register' %}" class="button small">글 등록</a></h3>
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -59,7 +59,7 @@
                     {% for board in board_list %}
                         <tr class="tBody">
                             <td class="bno">{{ board.bno }}</td>
-                            <td class="title"><a href="read.html">{{ board.title }}</a></td>
+                            <td class="title"><a id="goRead" href="{{ board.bno }}">{{ board.title }}</a></td>
                             <td class="writer">{{ board.writer }}</td>
                             <td class="regDate">{{ board.regDate }}</td>
                             <td class="updateDate">{{ board.updateDate }}</td>
@@ -98,4 +98,51 @@
 </div>
 
 </body>
+<script src="{% static 'js/core/jquery-3.6.4.min.js' %}"></script>
+<script>
+    // 글 등록 시 전달받는 게시글 번호를 alert으로 출력
+    let pageForm = $(document.pageForm);
+    let paging = [[${pageMaker.criteria.listLink}]];
+    let searchForm = $(document.searchForm);
+
+    $(document).ready(function(){
+        let bno = [[${bno}]];
+        if(bno == null || history.state){
+            return;
+        }
+        alert("게시글 " + bno + "번이 등록되었습니다.");
+        history.replaceState({}, null, null);
+    });
+
+    $("a.changePage").click(function(e){
+        e.preventDefault();
+        pageForm.find("input[name='pageNum']").val($(this).attr("href"));
+        pageForm.submit();
+    });
+
+    $("a#goRead").on("click", function(e){
+        e.preventDefault();
+        location.href = "/board/read" + paging + "&bno=" + $(this).attr("href");
+    })
+
+    $("a.search").on("click", function(e){
+       e.preventDefault();
+       if(!searchForm.find("option:selected").val()){
+           alert("검색 종류를 선택하세요");
+           return;
+       }
+
+       if(!searchForm.find("input#keyword").val()){
+           alert("키워드를 입력하세요");
+           return;
+       }
+        searchForm.submit();
+    });
+
+    $("input#keyword").on("keydown", function(e){
+        if(e.keyCode == 13){
+            e.preventDefault();
+        }
+    })
+</script>
 </html>

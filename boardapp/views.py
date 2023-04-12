@@ -55,10 +55,16 @@ class BoardClass:
         self.updateDate = updateDate
 
 def h_list(request):
-    # return render(request, "board/board.html")
-    conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read().strip()
+    dev_ps = root_ps + 'dev'
+    print(dev_ps)
+
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+    # conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
     cur = conn.cursor()
-    sql_select = "select bno, title, content, writer, DATE_FORMAT(regDate, '%Y%m%d%H%i%s'), DATE_FORMAT(updateDate, '%Y%m%d%H%i%s') from TBL_BOARD"  # where borad = (%s) and 한페이지?
+    sql_select = "select bno, title, content, writer, DATE_FORMAT(regDate, '%Y%m%d%H%i%s'), DATE_FORMAT(updateDate, '%Y%m%d%H%i%s') from TBL_BOARD ORDER BY bno desc LIMIT 10 OFFSET 10"
     cur.execute(sql_select)
     rows = cur.fetchall()
     list1 = []

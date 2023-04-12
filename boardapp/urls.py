@@ -7,10 +7,10 @@ urlpatterns = [
     path("board_list", boardapp.board_list),
 
     # -- 2023.04.12. KKH 추가 시작 --
-    path("h_list", boardapp.h_list),
-    path("h_register_get", boardapp.h_register_get),
+    path("h_list", boardapp.h_list, name="list"),
+    path("h_register_get", boardapp.h_register_get, name="register"),
     path("h_register_post", boardapp.h_register_post),
-    path("h_modify", boardapp.h_modify),
+    path("h_modify", boardapp.h_modify, name="modify"),
     # -- 2023.04.12. KKH 추가 끝 --
 
 ]
