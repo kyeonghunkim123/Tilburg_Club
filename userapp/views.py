@@ -1,10 +1,12 @@
+import json
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.csrf import csrf_exempt
 import pymysql
 import platform
+
 import mysql.connector
 
 # Create your views here.
@@ -20,6 +22,7 @@ def login(request):
 def complete_login(request):
 
     login_id = request.POST.get("ID")
+    print(login_id)
     login_password = request.POST.get("password")
 
     filename = "C:/tilburg_club/tilburg.txt"
@@ -30,31 +33,22 @@ def complete_login(request):
 
     conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     cur = conn.cursor()
-
+    print(22222)
     sql_select = 'select user_ID,user_password,name from join_membership where user_ID = (%s) and user_password = (%s)'
     val = (login_id, login_password)
     cur.execute(sql_select, val)
-    print('3')
-    print(sql_select)
 
-
-    # if str_name != sql_select:
-    #      return render(request, "user/find_pw.html")
-
-    print('3')
     row = cur.fetchone()
-    print(row)
-
-
-
     if row is None :
-        return render(request, "user/login.html",{'error_message': '아이디 또는 비밀번호가 일치하지 않습니다.'})
+        return  JsonResponse(status=400)
     else:
         # 회원정보가 있는 경우
+        print(2222)
         request.session['user_name'] = row[2]
         request.session['user_id']=row[0]
+        response_data = {'user_id': row[0]}
         print(row[2])
-        return render(request, "user/main.html",{'user_id':request.session.get('user_id')})
+        return JsonResponse(response_data, status=200)
 
 
     # if str_name !=row[1] or str_phone !=row[2]:

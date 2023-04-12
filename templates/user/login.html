@@ -15,7 +15,7 @@
             <form name="login">
                 <input type="text" name="ID" class="text-field" placeholder="ID" required>
                 <input type="password" name="password" class="text-field" placeholder="Password" required>
-                <input type="submit" value="로그인" class="submit-btn" onclick="return check_form()">
+                <input type="submit" value="로그인" class="submit-btn" onclick="check_form()">
             </form>
 
             <div class = 'links'>
@@ -30,19 +30,20 @@
      function check_form() {
                 var user_ID = document.getElementsByName("ID")[0].value;
                 var user_password = document.getElementsByName("password")[0].value;
-                if (user_ID == "") {
-                    alert("아이디를 입력하세요.");}
+                if (user_ID == "" && user_password =="") {
+                    alert("아이디 및 비밀번호를  입력하세요.");}
                 else {
-                console.log(user_ID);
+                console.log(user_password);
                 fetch('/complete_login', {
                  method: 'POST',
                   body: JSON.stringify({
-                    ID: user_id,
+                    ID: user_ID,
+                    PW:user_password
                      }),
                   headers: {'Content-Type': 'application/json'}
                 })
                 .then(response => {
-                  if (!response.ok) {
+                  if (response == 'null') {
                     throw new Error('아이디 or 비밀번호를 다르게 입력했습니다.');
                   }
                   return response.json();
@@ -51,7 +52,7 @@
                   if (data.error_message) {
                     alert(data.error_message);
                   } else {
-                   w
+                  window.location.href = "user/main";
                   }
                 })
                 .catch(error => {
@@ -61,6 +62,6 @@
                 }
 
 }
-indow.location.href = "user/main";
+
 </script>
 </html>
