@@ -53,8 +53,6 @@ def board_reg(request):
 
     print(request.session['title'])
     return render(request, "board/board.html")
-<<<<<<< HEAD
-=======
 
 def board_list(request):
     return render(request, "board/board_list.html")
@@ -118,4 +116,3 @@ def h_modify(request):
     return render(request, 'board/h_modify.html')
 
     # -- 2023.04.12. KKH 추가 끝 --
->>>>>>> dev

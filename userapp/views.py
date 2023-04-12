@@ -45,7 +45,7 @@ def complete_login(request):
     row = cur.fetchone()
     print(row)
 
-    if row is None :
+    if row is None:
         return render(request, "user/login.html",{'error_message': '아이디 또는 비밀번호가 일치하지 않습니다.'})
     else:
         # 회원정보가 있는 경우
