@@ -6,29 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>아이디 찾기</title>
-  <link rel ="stylesheet"  href="{% static 'css/find_id.css'%}">
+  <link rel ="stylesheet"  href="{% static 'css/join.css'%}">
 </head>
+
 <body>
-  <div class="inner">
-    <div class="container">
-      <h1>아이디 찾기</h1>
-      <form id="form1" action="find_mi" name="find_mi" method="POST">
-        {% csrf_token %}
-        <ul>
-          <li>
-            <input type="text" name="name" id="name" placeholder="홍길동" style="width:300px">
-          </li>
-          <li>
-            <input type="text" name="phone" id="phone" placeholder="010-XXXX-XXXX" style="width:300px">
-          </li>
-          <li>
-            <button value="확인" onclick="check_form()" onkeydown="keyboardEnter()">확인</button>
-          </li>
-        </ul>
-        <script type="text/javascript" src="/static/js/find_id.js"></script>
-        <script>function keyboardEnter(){if (event.keyCode == 13){check_form();}}</script>
-      </form>
-    </div>
-  </div>
+<div class="signup-form">
+  <h1>아이디 찾기</h1>
+  <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이름 </span><br><br>
+  <form id="form1" action="find_mi" name="find_mi" method="POST">
+    {% csrf_token %}
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name" placeholder="홍길동" style="width:300px"><br>
+    <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp전화번호 </span><br><br>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="phone" id="phone" placeholder="010-XXXX-XXXX" style="width:300px">
+
+<!--    type="submit" -->
+  </form>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button value="확인" onclick="check_form()" onkeydown="keyboardEnter()">확인</>
+  <script type="text/javascript" src="/static/js/find_id.js"></script>
+  <script>function keyboardEnter(){if (event.keyCode == 13){check_form();}}</script>
+</div>
 </body>
 </html>
