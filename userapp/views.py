@@ -1,11 +1,11 @@
-import requests
+# import requests
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.csrf import csrf_exempt
 import pymysql
 import platform
-import mysql.connector
+# import mysql.connector
 
 # Create your views here.
 
