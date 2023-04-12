@@ -37,9 +37,8 @@
                 fetch('/complete_login', {
                  method: 'POST',
                   body: JSON.stringify({
-                    ID: user_ID,
-                    password: user_password
-                  }),
+                    ID: user_id,
+                     }),
                   headers: {'Content-Type': 'application/json'}
                 })
                 .then(response => {
@@ -52,7 +51,7 @@
                   if (data.error_message) {
                     alert(data.error_message);
                   } else {
-                   window.location.href = "user/main";
+                   w
                   }
                 })
                 .catch(error => {
@@ -62,6 +61,6 @@
                 }
 
 }
-
+indow.location.href = "user/main";
 </script>
 </html>
