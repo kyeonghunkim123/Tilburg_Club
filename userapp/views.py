@@ -1,13 +1,24 @@
+<<<<<<< HEAD
 import json
+=======
+<<<<<<< HEAD
+# import requests
+=======
+>>>>>>> dev
 
+>>>>>>> ysseo
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.csrf import csrf_exempt
 import pymysql
 import platform
+<<<<<<< HEAD
 
 import mysql.connector
+=======
+# import mysql.connector
+>>>>>>> dev
 
 # Create your views here.
 
