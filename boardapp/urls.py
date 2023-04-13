@@ -4,10 +4,7 @@ import boardapp.views as boardapp
 urlpatterns = [
     path("board", boardapp.board),
     path("board_write", boardapp.board_write),
-<<<<<<< HEAD
-    path("board_reg",boardapp.board_reg)
-    ]
-=======
+    path("board_reg",boardapp.board_reg),
     path("board_list", boardapp.board_list),
 
     # -- 2023.04.12. KKH 추가 시작 --
@@ -17,9 +14,6 @@ urlpatterns = [
     path("h_modify", boardapp.h_modify, name="modify"),
     # -- 2023.04.12. KKH 추가 끝 --
 
+    path('abracadabra', boardapp.banana, name="banana"),
 ]
->>>>>>> dev
 
-# urlpatterns = [
-#     path("login", userapp.login)
-#     ]

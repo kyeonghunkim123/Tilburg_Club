@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 # from mysql.connector import cursor
@@ -60,10 +61,6 @@ def board_list(request):
 
 
 
-
-
-
-
 # -- 2023.04.12. KKH 추가 시작 --
 
 class BoardClass:
@@ -81,6 +78,7 @@ def h_list(request):
         root_ps = f.read().strip()
     dev_ps = root_ps + 'dev'
     print(dev_ps)
+    # user_id = 'lee1234'
 
     conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     # conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
@@ -94,8 +92,11 @@ def h_list(request):
         list1.append(boardClass)
     # request.session['list'] = list1
     # print(rows)
-    context = {'board_list': list1}
+    context = {'board_list': list1,
+               'board_list2': list2}
+    context2 = {}
     return render(request, 'board/h_list.html', context)
+# {'abracadabra' : user_id}
 
 def h_register_get(request):
     print("---------GET 1 --------")
