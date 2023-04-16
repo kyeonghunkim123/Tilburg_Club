@@ -4,10 +4,40 @@ from django.views.decorators.http import require_http_methods
 import pymysql
 
 # Create your views here.
+class bordCls:
+    def __init__(self, contnum, title, content, nickname, created_at, views):
+        self.contnum = contnum
+        self.title = title
+        self.content = content
+        self.nickname = nickname
+        self.created_at = created_at
+        self.views = views
 def board(request):
     print("------------------------")
+    filename = "C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps = f.read().strip()
+    dev_ps = root_ps + 'dev'
+    print(dev_ps)
 
-    return render(request, "board/board.html")
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+    # conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
+    cur = conn.cursor()
+    sql_select = "select contnum, title, content, nickname, DATE_FORMAT(created_at, '%Y%m%d%H%i%s'), views from board_table ORDER BY contnum desc LIMIT 10 OFFSET 10"
+    # DATE_FORMAT(updateDate, '%Y%m%d%H%i%s')
+    cur.execute(sql_select)
+    rows = cur.fetchall()
+    list1 = []
+    for row in rows:
+        bordCls = bordCls(row[0],row[1],row[2],row[3],row[4],row[5])
+        list1.append(bordCls)
+    print("------------------------")
+    # request.session['list'] = list1
+    # print(rows)
+    context = {'board': list1}
+    return render(request, 'board/board.html', context)
+    print("------------------------")
+    # return render(request, "board/board.html")
 
 def board_write(request):
     return render(request, "board/board_write.html")
@@ -35,10 +65,6 @@ def complete_write(request):
 
 def board_list(request):
     return render(request, "board/board_list.html")
-
-
-
-
 
 
 
