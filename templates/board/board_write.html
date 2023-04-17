@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/board_write.css' %}">
 </head>
 <body>
-    <form method="post" action="board">
+    <form method="post" action="complete_write">
         {% csrf_token %}
     <p>글쓰기</p>
         <div>
@@ -27,11 +27,10 @@
             <input type="file" name="uploadFiles" multiple>
         </div>
         <div class="list">
-            <a href="board">등록</a>
+            <input type="submit" class="button" value="등록" />
         </div>
         <div id="cancel" class="list">
             <a href="board">취소</a>
         </div>
-
 </body>
 </html>

@@ -5,13 +5,14 @@ import pymysql
 
 # Create your views here.
 class bordCls:
-    def __init__(self, contnum, title, content, nickname, created_at, views):
-        self.contnum = contnum
+    def __init__(self, pno, title, content, writer, regDate, view_count):
+        self.pno = pno
         self.title = title
         self.content = content
-        self.nickname = nickname
-        self.created_at = created_at
-        self.views = views
+        self.writer = writer
+        self.regDate = regDate
+        self.view_count = view_count
+
 def board(request):
     print("------------------------")
     filename = "C:/tilburg_club/tilburg.txt"
@@ -21,29 +22,24 @@ def board(request):
     print(dev_ps)
 
     conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
-    # conn = pymysql.connect(host='localhost', user='root', password='1234', db='tilburg_club', charset='utf8')
     cur = conn.cursor()
-    sql_select = "select contnum, title, content, nickname, DATE_FORMAT(created_at, '%Y%m%d%H%i%s'), views from board_table ORDER BY contnum desc LIMIT 10 OFFSET 10"
-    # DATE_FORMAT(updateDate, '%Y%m%d%H%i%s')
+    sql_select = "select pno, title, content, writer, DATE_FORMAT(regDate, '%Y%m%d%H%i%s'), view_count from board_table ORDER BY pno DESC"
     cur.execute(sql_select)
     rows = cur.fetchall()
+
     list1 = []
     for row in rows:
-        bordCls = bordCls(row[0],row[1],row[2],row[3],row[4],row[5])
-        list1.append(bordCls)
-    print("------------------------")
-    # request.session['list'] = list1
-    # print(rows)
+        bord_cls = bordCls(row[0],row[1],row[2],row[3],row[4],row[5])
+        list1.append(bord_cls)
     context = {'board': list1}
     return render(request, 'board/board.html', context)
-    print("------------------------")
     # return render(request, "board/board.html")
 
 def board_write(request):
     return render(request, "board/board_write.html")
 def complete_write(request):
     cmplt_title = request.POST.get("title")
-    cmplt_userid = request.POST.get("nickname")
+    cmplt_writer = request.POST.get("writer")
     cmplt_content = request.POST.get("content")
 
     filename = "C:/tilburg_club/tilburg.txt"
@@ -56,8 +52,8 @@ def complete_write(request):
     conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     print(root_ps)
     cur = conn.cursor()
-    sql_insert = 'insert into board_table (title, content, nickname, created_at, views) values(%s,%s,%s,%s,%s)'
-    val = (cmplt_title, cmplt_userid, cmplt_content)
+    sql_insert = 'insert into board_table (title, content, writer) values(%s,%s,%s)'
+    val = (cmplt_title, cmplt_writer, cmplt_content)
     cur.execute(sql_insert, val)
     conn.commit()
     conn.close()

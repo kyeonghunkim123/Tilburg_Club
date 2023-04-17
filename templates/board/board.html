@@ -10,6 +10,7 @@
 </head>
 <body>
     <form method="post" action="board/board_write" >
+        {% csrf_token %}
 	<header>
 			<ul>
                 <li><a href="http://127.0.0.1:8000/board/board">자유게시판</a></li>
@@ -19,21 +20,21 @@
 <table class="board">
   <thead>
     <tr>
-      <th class="contnum">#</th>
+      <th class="pno">#</th>
       <th class="title">제목</th>
-      <th class="nickname">작성자</th>
-      <th class="created_at">등록일</th>
-      <th class="">조회수</th>
+      <th class="writer">작성자</th>
+      <th class="regDate">등록일</th>
+      <th class="view_count">조회수</th>
     </tr>
   </thead>
   <tbody>
   {% for board in board %}
     <tr class="post">
-      <td class="contnum">{{board.contnum}}</td>
-      <td class="title"><a href="{{board.contnum}}">{{board.title}}</a></td>
-      <td class="nickname">{{board.nickname}}</td>
-      <td class="created_at">{{board.created_at}}</td>
-      <td class="views">{{board.views}}</td>
+      <td class="pno">{{board.pno}}</td>
+      <td class="title"><a href="{{board.pno}}">{{board.title}}</a></td>
+      <td class="writer">{{board.writer}}</td>
+      <td class="regDate">{{board.regDate}}</td>
+      <td class="view_count">{{board.view_count}}</td>
     </tr>
   {% empty %}
     <tr>
