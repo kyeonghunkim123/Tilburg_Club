@@ -37,6 +37,7 @@ def board(request):
 
 def board_write(request):
     return render(request, "board/board_write.html")
+<<<<<<< HEAD
 def complete_write(request):
     cmplt_title = request.POST.get("title")
     cmplt_writer = request.POST.get("writer")
@@ -51,6 +52,20 @@ def complete_write(request):
 
     conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
     print(root_ps)
+=======
+def board_portfolio(request):
+    return render(request, "board/board_portfolio.html")
+def board_list(request):
+
+    filename="C:/tilburg_club/tilburg.txt"
+    with open(filename) as f:
+        root_ps=f.read()
+    print(root_ps)
+    print(filename)
+    dev_ps=root_ps+'dev'
+
+    conn = pymysql.connect(host='130.162.154.239', user='dev', password=dev_ps, db='tilburg_club', charset='utf8')
+>>>>>>> ead702bfa66318edc49102d61ce4d77d45d4d5c3
     cur = conn.cursor()
     sql_insert = 'insert into board_table (title, content, writer) values(%s,%s,%s)'
     val = (cmplt_title, cmplt_writer, cmplt_content)

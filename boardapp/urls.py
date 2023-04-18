@@ -2,6 +2,7 @@ from django.urls import path
 import boardapp.views as boardapp
 
 urlpatterns = [
+<<<<<<< HEAD
     path("board", boardapp.board, name="board"),
     path("board_write", boardapp.board_write, name="write"),
     path("board_list", boardapp.board_list, name="blist"),
@@ -15,7 +16,14 @@ urlpatterns = [
     # path("board_main", boardapp, name='board_main')
 
 ]
+=======
+    path("board", boardapp.board),
+    path("board_write", boardapp.board_write),
+    path("board_list", boardapp.board_list),
+    path("board_portfolio", boardapp.board_portfolio)
+    ]
+>>>>>>> ead702bfa66318edc49102d61ce4d77d45d4d5c3
 
 # urlpatterns = [
 #     path("login", userapp.login)
-#     ]
+#
