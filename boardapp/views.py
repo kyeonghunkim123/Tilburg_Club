@@ -31,8 +31,8 @@ def board(request):
     for row in rows:
         bord_cls = bordCls(row[0],row[1],row[2],row[3],row[4],row[5])
         list1.append(bord_cls)
-    context = {'board': list1}
-    return render(request, 'board/board.html', context)
+        context = {'board': list1}
+        return render(request, 'board/board.html', context)
     # return render(request, "board/board.html")
 
 def board_write(request):
