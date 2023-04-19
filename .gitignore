@@ -9,3 +9,5 @@ Tilburg_Club/__pycache__/wsgi.cpython-39.pyc
 userapp/__pycache__/__init__.cpython-39.pyc
 userapp/__pycache__/urls.cpython-39.pyc
 userapp/__pycache__/views.cpython-39.pyc
+userapp/__pycache__/views.cpython-38.pyc
+boardapp/__pycache__/views.cpython-38.pyc
